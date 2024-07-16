@@ -15,7 +15,7 @@ make build
 This command will build a docker image with the tag `opensips/opensips-cp:latest` with `master` version of `opensips-cp`. To build a specific version of `opensips-cp` you can run:
 
 ```
-OPENSIPS_CP_VERSION=7.2.3 make build
+OPENSIPS_CP_VERSION=9.3.4 make build
 ```
 
 Makefile also includes a `start` target which can be used to start a container with the built image and expose the web interface on `port 80`.
