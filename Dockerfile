@@ -1,5 +1,5 @@
 FROM debian:bullseye
-LABEL maintainer=razvan@opensips.org
+LABEL maintainer=darius.stefan@opensips.org
 
 USER root
 
