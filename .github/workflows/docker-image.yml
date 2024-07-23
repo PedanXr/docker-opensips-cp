@@ -24,14 +24,18 @@ jobs:
     - name: Determine tag
       run: |
         if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+          echo "BRANCH=${{ github.event.client_payload.branch != '' && 'master' || github.event.client_payload.branch }}" >> $GITHUB_ENV
           echo "DOCKER_TAG=${{ github.event.client_payload.docker_tag }}" >> $GITHUB_ENV
         else
           echo "DOCKER_TAG=latest" >> $GITHUB_ENV
+          echo "BRANCH=master" >> $GITHUB_ENV
         fi
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
         context: .
+        build-args: |
+          OPENSIPS_CP_VERSION=${{ env.BRANCH }}
         push: true
         tags: opensips/opensips-cp:${{ env.DOCKER_TAG }}
