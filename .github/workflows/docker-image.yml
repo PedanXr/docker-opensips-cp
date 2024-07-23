@@ -24,7 +24,7 @@ jobs:
     - name: Determine tag
       run: |
         if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-          echo "BRANCH=${{ github.event.client_payload.branch != '' && 'master' || github.event.client_payload.branch }}" >> $GITHUB_ENV
+          echo "BRANCH=${{ github.event.client_payload.branch && github.event.client_payload.branch || 'master' }}" >> $GITHUB_ENV
           echo "DOCKER_TAG=${{ github.event.client_payload.docker_tag }}" >> $GITHUB_ENV
         else
           echo "DOCKER_TAG=latest" >> $GITHUB_ENV
