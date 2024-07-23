@@ -31,7 +31,8 @@ WORKDIR /var/www/html/opensips-cp
 ONBUILD COPY modules.inc.php /var/www/html/opensips-cp/config/
 
 RUN sed -i "s/root/www-data/g" /var/www/html/opensips-cp/config/tools/system/smonitor/opensips_stats_cron &&\
-    ln -s /var/www/html/opensips-cp/config/tools/system/smonitor/opensips_stats_cron /etc/cron.d/
+    touch /var/log/cron.log &&\
+    cp /var/www/html/opensips-cp/config/tools/system/smonitor/opensips_stats_cron /etc/cron.d/
 
 EXPOSE 80
 
