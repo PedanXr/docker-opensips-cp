@@ -26,6 +26,8 @@ RUN git clone --single-branch -b ${OPENSIPS_CP_VERSION} https://github.com/OpenS
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
+WORKDIR /var/www/html/opensips-cp
+
 ONBUILD COPY modules.inc.php /var/www/html/opensips-cp/config/
 
 RUN sed -i "s/root/www-data/g" /var/www/html/opensips-cp/config/tools/system/smonitor/opensips_stats_cron &&\
