@@ -9,4 +9,6 @@ fi
 
 cron &
 
+# ensure pidfile does not exist, otherwise apache won't start
+rm -f /var/run/apache2/apache2.pid
 exec apachectl -D FOREGROUND
