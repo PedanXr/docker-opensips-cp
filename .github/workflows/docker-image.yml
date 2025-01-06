@@ -38,4 +38,4 @@ jobs:
         build-args: |
           OPENSIPS_CP_VERSION=${{ env.BRANCH }}
         push: true
-        tags: opensips/opensips-cp:${{ env.DOCKER_TAG }}
+        tags: schuwima/opensips-cp:${{ env.DOCKER_TAG }}
